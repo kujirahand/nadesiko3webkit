@@ -8,7 +8,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/webview/webview"
+	webview "github.com/jchv/go-webview2"
+	//"github.com/webview/webview"
 )
 
 const LOCAL_SERVER_ADDR = "127.0.0.1:17145"
@@ -56,8 +57,8 @@ func main() {
 	go startServer()
 	w := webview.New(debug)
 	defer w.Destroy()
-	w.SetTitle("なでしこ3")
-	w.SetSize(800, 600, webview.HintNone)
+	w.SetTitle("nadesiko3")
+	w.SetSize(800, 600, webview.HintFixed)
 	w.Navigate("http://" + LOCAL_SERVER_ADDR + "/webapp/index.html?time=" + utime)
 	w.Run()
 }
