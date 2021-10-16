@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -11,11 +13,29 @@ import (
 
 const LOCAL_SERVER_ADDR = "127.0.0.1:17145"
 
+func Exists(name string) bool {
+	_, err := os.Stat(name)
+	return !os.IsNotExist(err)
+}
+
+func getBokanPath() string {
+	cur, _ := os.Getwd()
+	webapp := filepath.Join(cur, "webapp")
+	if Exists(webapp) {
+		return cur
+	}
+	exe, _ := os.Executable()
+	return filepath.Dir(exe)
+}
+
 func startServer() {
+	rootDir := getBokanPath()
 	http.HandleFunc("/", IndexErrorHandler)
 	http.HandleFunc("/webapp/", func(w http.ResponseWriter, r *http.Request) {
+		file := filepath.Join(rootDir, r.URL.Path[1:])
 		log.Println("[REQ]" + r.RequestURI)
-		http.ServeFile(w, r, r.URL.Path[1:])
+		log.Println("[FILE]" + file)
+		http.ServeFile(w, r, file)
 	})
 	err := http.ListenAndServe(LOCAL_SERVER_ADDR, nil)
 	if err != nil {
