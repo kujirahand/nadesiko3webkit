@@ -1,10 +1,22 @@
 /* reset style */
-h1, h3, .sbox h4, .edit_head, .buttons, #info {
+h1, h3, .sbox h4, .edit_head, .buttons, #info, #main {
   margin: 0;
 }
 
 h1, h3, #info {
   padding: 0.5em;
+}
+
+/* nadesiko3 */
+div.nako3row {
+  margin: 0;
+  padding: 0;
+}
+div.nako3row .nako3info_text {
+  margin: 0;
+  border: 0;
+  padding: 10px;
+  background-color: #fffff0;
 }
 
 /* title */
@@ -74,7 +86,6 @@ h4 {
   font-size: 1.1em;
   border-bottom: 1px solid silver;
 }
-
 
 .sbox h4 {
   font-size: 0.9em;

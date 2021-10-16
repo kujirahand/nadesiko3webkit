@@ -6,25 +6,30 @@
   <title>なでしこ3</title>
   <link rel="stylesheet" type="text/css" href="extlib/pure-min.css">
   <link rel="stylesheet" type="text/css" href="css/common.css">
-  <link rel="stylesheet" type="text/css" href="css/basic.css">
 </head>
 <body>
-<div>
+<div id="main">
+  <!-- #header -->
+  <div id="header"></div>
+  
+  <!-- RESULT -->
+  <div id="nako3result_div_1" class="nako3row" style="display:none;">
+    <div id="nako3_info_1" class="nako3info_text" style="display:none;"></div>
+    <div id="nako3_info_html_1" class="nako3info_html" style="display:none"></div>
+    <div id="nako3_error_1" class="nako3info_html" style="display:none"></div>
+  </div>
+  
+  <!-- div -->
+  <div id="nako3_div_1" class="nako3_div"></div>
+  
+  <!-- canvas -->
+  <canvas id='nako3_canvas_1' width='800' height='400'></canvas>
+  
+  <!-- #footer -->
+  <div id="footer"></div>
 
-<!-- RESULT -->
-<div id="head_info"></div>
-<div id="nako3result_div_1" class="nako3row" style="display:none;">
-  <textarea readonly id="nako3_info_1" rows="5" style="display:none; width:99%; padding: 8px;"></textarea>
-  <div id="nako3_info_html_1" class="nako3info_html" style="display:none"></div>
-</div><!-- end of #nako3_error_1 -->
+</div><!-- #main -->
 
-<!-- FREE DOM AREA -->
-<div id="nako3_div_1" class="nako3_div"></div>
-
-<!-- CANVAS -->
-<canvas id='nako3_canvas_1' width='750' height='400'></canvas>
-
-</div>
 <!-- なでしこ3の読み込みコード -->
 <script src="./nadesiko3/wnako3.js"></script>
 <script src="./nadesiko3/plugin_turtle.js"></script>
@@ -72,7 +77,7 @@
       err.style.display = 'block'
       return
     } else {
-      info.innerHTML += to_html(s) + "\n"
+      info.innerHTML += to_html(s) + "<br>\n"
       info.style.display = 'block'
     }
   }
@@ -111,21 +116,21 @@
             .replace(/\>/g, '&gt;')
   }
   // 変数の初期化
-  const panelNo = 1
-  const div_name = "#nako3_div_" + panelNo
-  const canvas_name = "#nako3_canvas_" + panelNo
+  const div_name = "#nako3_div_" + nako3_info_id
+  const canvas_name = "#nako3_canvas_" + nako3_info_id
   const addon =
     "「" + div_name + "」へDOM親要素設定;" +
-    "「" + div_name + "」に「」をHTML設定;"
+    "「" + div_name + "」に「」をHTML設定;" + 
     "「" + canvas_name + "」へ描画開始;" +
     "カメ描画先=「" + canvas_name + "」;" +
     "\n" // 重要(インデント構文対策)
 
   // メインコードの読み込み
-  fetch('./main.nako3')
+  fetch('./main.nako3?t=' + (new Date()).getTime())
   .then(response => response.text())
   .then(nakoSource => {
     nako3_add_func()
+    console.log(addon + nakoSource)
     navigator.nako3.runReset(addon + nakoSource, '', addon) 
   });
 </script>
