@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>なでしこ3</title>
+  <link rel="stylesheet" type="text/css" href="extlib/pure-min.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/basic.css">
+</head>
+<body>
+<div>
+
+<!-- RESULT -->
+<div id="head_info"></div>
+<div id="nako3result_div_1" class="nako3row" style="display:none;">
+  <textarea readonly id="nako3_info_1" rows="5" style="display:none; width:99%; padding: 8px;"></textarea>
+  <div id="nako3_info_html_1" class="nako3info_html" style="display:none"></div>
+</div><!-- end of #nako3_error_1 -->
+
+<!-- FREE DOM AREA -->
+<div id="nako3_div_1" class="nako3_div"></div>
+
+<!-- CANVAS -->
+<canvas id='nako3_canvas_1' width='750' height='400'></canvas>
+
+</div>
+<!-- なでしこ3の読み込みコード -->
+<script src="./nadesiko3/wnako3.js"></script>
+<script src="./nadesiko3/plugin_turtle.js"></script>
+<script src="./nadesiko3/plugin_csv.js"></script>
+<script src="./nadesiko3/plugin_datetime.js"></script>
+<script src="./nadesiko3/plugin_markup.js"></script>
+<script src="./nadesiko3/plugin_kansuji.js"></script>
+<!-- 追加コード-->
+<script src="./extlib/chart.js@3.2.1/chart.min.js"></script>
+
+<!-- main.nako3 の読み込みコード -->
+<script>
+  var nako3_info_id = 1
+  function qs(query) {  
+    return document.querySelector(query)
+  }
+  var nako3_get_resultbox = function () {
+    return qs("#nako3result_div_" + nako3_info_id)
+  }
+  var nako3_get_info = function () {
+    return qs("#nako3_info_" + nako3_info_id)
+  }
+  var nako3_get_error = function () {
+    return qs("#nako3_error_" + nako3_info_id)
+  }
+  var nako3_get_canvas = function () {
+    return qs("#nako3_canvas_" + nako3_info_id)
+  }
+  var nako3_get_div = function () {
+    return qs("#nako3_div_" + nako3_info_id)
+  }
+  // 表示
+  var nako3_print = function (s) {
+    console.log("[表示] " + s)
+    var info = nako3_get_info()
+    if (!info) return
+    var box = nako3_get_resultbox()
+    box.style.display = 'block'
+    s = "" + s // 文字列に変換
+    // エラーだった場合
+    if (s.substr(0, 9) == "==ERROR==") {
+      s = s.substr(9)
+      var err = nako3_get_error()
+      err.innerHTML = s
+      err.style.display = 'block'
+      return
+    } else {
+      info.innerHTML += to_html(s) + "\n"
+      info.style.display = 'block'
+    }
+  }
+  //---------------------------------
+  var nako3_clear = function (s, use_canvas) {
+    var info = nako3_get_info()
+    if (!info) return
+    info.innerHTML = ''
+    info.style.display = 'none'
+    var err = nako3_get_error()
+    err.innerHTML = ''
+    err.style.display = 'none'
+    var div = nako3_get_div()
+    if (div) div.innerHTML = ''
+    if (use_canvas) {
+      var canvas = nako3_get_canvas()
+      if (canvas) {
+        var ctx = canvas.getContext('2d')
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+      }
+    }
+    if (navigator.nako3) {
+      navigator.nako3.clearPlugins()
+    }
+  }
+
+  // 独自関数の登録
+  const nako3_add_func = function () {
+    navigator.nako3.setFunc("表示", [['の', 'を', 'と']], nako3_print, true)
+    navigator.nako3.setFunc("表示ログクリア", [], nako3_clear, true)
+  }
+  function to_html(s) {
+    s = '' + s
+    return s.replace(/\&/g, '&amp;')
+            .replace(/\</g, '&lt;')
+            .replace(/\>/g, '&gt;')
+  }
+  // 変数の初期化
+  const panelNo = 1
+  const div_name = "#nako3_div_" + panelNo
+  const canvas_name = "#nako3_canvas_" + panelNo
+  const addon =
+    "「" + div_name + "」へDOM親要素設定;" +
+    "「" + div_name + "」に「」をHTML設定;"
+    "「" + canvas_name + "」へ描画開始;" +
+    "カメ描画先=「" + canvas_name + "」;" +
+    "\n" // 重要(インデント構文対策)
+
+  // メインコードの読み込み
+  fetch('./main.nako3')
+  .then(response => response.text())
+  .then(nakoSource => {
+    nako3_add_func()
+    navigator.nako3.runReset(addon + nakoSource, '', addon) 
+  });
+</script>
+</body>
+</html>
