@@ -4,9 +4,6 @@
 package main
 
 import (
-	"strconv"
-	"time"
-
 	webview "github.com/jchv/go-webview2"
 )
 
