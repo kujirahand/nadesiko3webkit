@@ -25,4 +25,4 @@ func main() {
 	w.SetSize(info.Width, info.Height, hint)
 	w.Navigate(GetIndexURI(info.Port))
 	w.Run()
-}}
+}
