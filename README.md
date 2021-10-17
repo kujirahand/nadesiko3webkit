@@ -6,11 +6,6 @@ nadesiko3 for webkit
 
  - Go言語
 
-# macOSとWindowsで使うライブラリの違い
-
- - macOSでは[webview](https://github.com/webview/webview)を使う
- - Windowsでは[go-webview2](https://github.com/jchv/go-webview2)を使う
-
 ## コンパイルの方法
 
 必要なモジュールを取得する。
@@ -21,7 +16,7 @@ go get -u
 
 ## Windowsの場合
 
-WindowsではWebView2のランタイム「[こちら](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)」が必要です。
+WindowsではChromium版のEdgeに加えて、WebView2のランタイム「[こちら](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)」が必要です。
 
 ```bash
 batch¥build-win.bat
@@ -32,4 +27,9 @@ batch¥build-win.bat
 ```bash
 batch/build-mac.sh
 ```
+
+## (memo) macOSとWindowsで使うライブラリの違い
+
+ - macOSでは[webview](https://github.com/webview/webview)を使う
+ - Windowsでは[go-webview2](https://github.com/jchv/go-webview2)を使う
 
