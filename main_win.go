@@ -18,7 +18,7 @@ func main() {
 	w := webview.New(debug)
 	defer w.Destroy()
 	w.SetTitle("nadesiko3")
-	w.SetSize(800, 600, webview.HintFixed)
+	w.SetSize(800, 600, webview.HintNone)
 	w.Navigate("http://" + LOCAL_SERVER_ADDR + "/webapp/index.html?time=" + utime)
 	w.Run()
 }
