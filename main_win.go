@@ -9,12 +9,20 @@ import (
 
 func main() {
 	debug := true
-	go StartServer()
+	info := ReadIndexJson()
+
+	// ローカルサーバーを起動
+	go StartServer(info.Port)
+
+	// ブラウザを起動
 	w := webview.New(debug)
 	defer w.Destroy()
-	info := ReadIndexJson()
 	w.SetTitle(info.Title)
-	w.SetSize(info.Width, info.Height, webview.HintNone)
-	w.Navigate(GetIndexURI())
+	hint := webview.HintNone
+	if !info.Resize {
+		hint = webview.HintFixed
+	}
+	w.SetSize(info.Width, info.Height, hint)
+	w.Navigate(GetIndexURI(info.Port))
 	w.Run()
-}
+}}

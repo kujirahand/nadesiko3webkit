@@ -12,12 +12,12 @@ import (
 	"time"
 )
 
-const LOCAL_SERVER_ADDR = "127.0.0.1:17145"
-
 type IndexInfo struct {
 	Title  string `json:"title"`
 	Width  int    `json:"width"`
 	Height int    `json:"height"`
+	Resize bool   `json:"resize"`
+	Port   int    `json:"port"`
 }
 
 func Exists(name string) bool {
@@ -35,7 +35,7 @@ func GetBokanPath() string {
 	return filepath.Dir(exe)
 }
 
-func StartServer() {
+func StartServer(port int) {
 	rootDir := GetBokanPath()
 	http.HandleFunc("/", indexErrorHandler)
 	http.HandleFunc("/webapp/", func(w http.ResponseWriter, r *http.Request) {
@@ -44,7 +44,8 @@ func StartServer() {
 		log.Println("[FILE]" + file)
 		http.ServeFile(w, r, file)
 	})
-	err := http.ListenAndServe(LOCAL_SERVER_ADDR, nil)
+	addr := "127.0.0.1:" + strconv.Itoa(port)
+	err := http.ListenAndServe(addr, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -68,7 +69,7 @@ func ReadIndexJson() IndexInfo {
 	return info
 }
 
-func GetIndexURI() string {
+func GetIndexURI(port int) string {
 	utime := strconv.FormatInt(time.Now().Unix(), 16)
-	return "http://" + LOCAL_SERVER_ADDR + "/webapp/index.html?time=" + utime
+	return "http://127.0.0.1:" + strconv.Itoa(port) + "/webapp/index.html?time=" + utime
 }
