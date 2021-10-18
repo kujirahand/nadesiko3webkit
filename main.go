@@ -7,20 +7,32 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
 )
 
+// index.json
 type IndexInfo struct {
 	Title  string `json:"title"`
 	Width  int    `json:"width"`
 	Height int    `json:"height"`
 	Resize bool   `json:"resize"`
 	Port   int    `json:"port"`
+	AppId  string `json:"appid"`
 }
+
+type ApiResult struct {
+	Result bool   `json:"result"`
+	Tag    string `json:"tag"`
+	Value  string `json:"value"`
+}
+
+var GlobalInfo *IndexInfo
 
 func Exists(name string) bool {
 	_, err := os.Stat(name)
@@ -37,8 +49,50 @@ func GetBokanPath() string {
 	return filepath.Dir(exe)
 }
 
+// アプリ専用の保存フォルダを得る
+func getUserDir() string {
+	// get home path
+	home := os.Getenv("HOMEPATH")
+	if runtime.GOOS != "windows" {
+		home = os.Getenv("HOME")
+	}
+	appid := url.PathEscape(GlobalInfo.AppId)
+	return filepath.Join(home, ".nadesiko3", appid)
+}
+
+func getUserFilename(name string) string {
+	name = url.PathEscape(name)
+	path := filepath.Join(getUserDir(), name)
+	return path
+}
+
+func saveData(name string, value string) error {
+	// 保存フォルダの確認
+	dir := getUserDir()
+	if !Exists(dir) {
+		os.MkdirAll(dir, os.ModePerm)
+	}
+	// 保存
+	path := getUserFilename(name)
+	err := ioutil.WriteFile(path, []byte(value), os.ModePerm)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func loadData(name string) (string, error) {
+	path := getUserFilename(name)
+	body, err := ioutil.ReadFile(path)
+	if err != nil {
+		return "", err
+	}
+	return string(body), nil
+}
+
 func StartServer(info *IndexInfo) {
 	rootDir := GetBokanPath()
+	// URI
 	http.HandleFunc("/", indexErrorHandler)
 	http.HandleFunc("/webapp/", func(w http.ResponseWriter, r *http.Request) {
 		file := filepath.Join(rootDir, r.URL.Path[1:])
@@ -46,12 +100,49 @@ func StartServer(info *IndexInfo) {
 		log.Println("[FILE]" + file)
 		http.ServeFile(w, r, file)
 	})
+	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
+		r.ParseForm()
+		funcName := r.FormValue("func")
+		switch funcName {
+		case "save":
+			name := r.FormValue("name")
+			value := r.FormValue("value")
+			fmt.Printf("name=%s, value=%s", name, value)
+			err := saveData(name, value)
+			if err != nil {
+				setResponse(w, &ApiResult{Result: false, Value: err.Error(), Tag: name})
+			} else {
+				setResponse(w, &ApiResult{Result: true, Value: "success", Tag: name})
+			}
+		case "load":
+			name := r.FormValue("name")
+			value, err := loadData(name)
+			if err != nil {
+				setResponse(w, &ApiResult{Result: false, Value: err.Error(), Tag: name})
+			} else {
+				setResponse(w, &ApiResult{Result: true, Value: value, Tag: name})
+			}
+		}
+		fmt.Printf("フォーム：\n%v\n", r.PostForm)
+	})
+	// start server
 	addr := "127.0.0.1:" + strconv.Itoa(info.Port)
 	fmt.Printf("[Server] http://%s\n", addr)
 	err := http.ListenAndServe(addr, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func setResponse(w http.ResponseWriter, result *ApiResult) {
+	w.WriteHeader(200)
+	w.Header().Set("Content-Type", "application/json; charset=utf8")
+	jsonData, err := json.Marshal(result)
+	if err != nil {
+		w.Write([]byte("{\"result\": false, \"unknown error\"}"))
+		return
+	}
+	w.Write([]byte(jsonData))
 }
 
 func indexErrorHandler(w http.ResponseWriter, r *http.Request) {
@@ -102,6 +193,7 @@ func ReadIndexJson() IndexInfo {
 		fmt.Printf("size=%d,%d\n", info.Width, info.Height)
 	}
 	checkPort(&info)
+	GlobalInfo = &info
 	return info
 }
 
