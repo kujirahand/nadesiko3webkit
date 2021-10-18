@@ -8,3 +8,8 @@ require (
 	github.com/webview/webview v0.0.0-20210330151455-f540d88dde4e
 	golang.org/x/sys v0.0.0-20211015200801-69063c4bb744 // indirect
 )
+
+require (
+	github.com/zserge/lorca v0.1.10 // indirect
+	golang.org/x/net v0.0.0-20200222125558-5a598a2470a0 // indirect
+)
