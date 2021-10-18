@@ -45,7 +45,7 @@ var nako3_print = function (s) {
     err.style.display = 'block'
     return
   } else {
-    info.innerHTML += to_html(s) + "<br>\n"
+    info.innerHTML += to_html(s).replace(/\n/, "\n<br>") + "<br>\n"
     info.style.display = 'block'
   }
 }
@@ -139,6 +139,6 @@ const nako3_add_func = function () {
   navigator.nako3.setFunc("表示", [['の', 'を', 'と']], nako3_print, true)
   navigator.nako3.setFunc("表示ログクリア", [], nako3_clear, true)
   navigator.nako3.setFunc("ファイル保存時", [['で'], ['を'],['へ', 'に']], nako3_fileSave, true)
-  navigator.nako3.setFunc("ファイル読時", [['で'],['を', 'の']], nako3_fileLoad, true)
+  navigator.nako3.setFunc("ファイル読時", [['で'],['を', 'の', 'から']], nako3_fileLoad, true)
   navigator.nako3.setFunc("ファイル一覧取得時", [['で']], nako3_files, true)
 }
