@@ -124,10 +124,21 @@ function nako3_fileLoad(cb, name, sys) {
   }, sys)
 }
 
+function nako3_files(cb, sys) {
+  sendPost('/api', {
+    func: 'files',
+  }, data => {
+    console.log(data)
+    sys.__v0['対象'] = data.value.split(',')
+    cb(data)
+  }, sys)
+}
+
 // 独自関数の登録
 const nako3_add_func = function () {
   navigator.nako3.setFunc("表示", [['の', 'を', 'と']], nako3_print, true)
   navigator.nako3.setFunc("表示ログクリア", [], nako3_clear, true)
   navigator.nako3.setFunc("ファイル保存時", [['で'], ['を'],['へ', 'に']], nako3_fileSave, true)
   navigator.nako3.setFunc("ファイル読時", [['で'],['を', 'の']], nako3_fileLoad, true)
+  navigator.nako3.setFunc("ファイル一覧取得時", [['で']], nako3_files, true)
 }

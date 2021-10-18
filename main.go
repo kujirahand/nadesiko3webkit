@@ -90,6 +90,62 @@ func loadData(name string) (string, error) {
 	return string(body), nil
 }
 
+func getFiles() ([]string, error) {
+	path := getUserDir()
+	files, err := ioutil.ReadDir(path)
+	if err != nil {
+		return nil, err
+	}
+	var paths []string = []string{}
+	for _, f := range files {
+		name, _ := url.PathUnescape(f.Name())
+		paths = append(paths, name)
+	}
+	return paths, nil
+}
+
+// API
+func apiHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	funcName := r.FormValue("func")
+	switch funcName {
+	case "save":
+		name := r.FormValue("name")
+		value := r.FormValue("value")
+		fmt.Printf("name=%s, value=%s", name, value)
+		err := saveData(name, value)
+		if err != nil {
+			setResponse(w, &ApiResult{Result: false, Value: err.Error(), Tag: name})
+		} else {
+			setResponse(w, &ApiResult{Result: true, Value: "success", Tag: name})
+		}
+	case "load":
+		name := r.FormValue("name")
+		value, err := loadData(name)
+		if err != nil {
+			setResponse(w, &ApiResult{Result: false, Value: err.Error(), Tag: name})
+		} else {
+			setResponse(w, &ApiResult{Result: true, Value: value, Tag: name})
+		}
+	case "exists":
+		name := r.FormValue("name")
+		if Exists(getUserFilename(name)) {
+			setResponse(w, &ApiResult{Result: true, Value: "1", Tag: name})
+		} else {
+			setResponse(w, &ApiResult{Result: true, Value: "0", Tag: name})
+		}
+	case "files":
+		files, err := getFiles()
+		if err != nil {
+			setResponse(w, &ApiResult{Result: false, Value: err.Error(), Tag: "error"})
+		} else {
+			setResponse(w, &ApiResult{Result: true, Value: strings.Join(files, ","), Tag: "files"})
+		}
+	default:
+		setResponse(w, &ApiResult{Result: false, Value: "no func", Tag: "error"})
+	}
+}
+
 func StartServer(info *IndexInfo) {
 	rootDir := GetBokanPath()
 	// URI
@@ -100,31 +156,7 @@ func StartServer(info *IndexInfo) {
 		log.Println("[FILE]" + file)
 		http.ServeFile(w, r, file)
 	})
-	http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
-		r.ParseForm()
-		funcName := r.FormValue("func")
-		switch funcName {
-		case "save":
-			name := r.FormValue("name")
-			value := r.FormValue("value")
-			fmt.Printf("name=%s, value=%s", name, value)
-			err := saveData(name, value)
-			if err != nil {
-				setResponse(w, &ApiResult{Result: false, Value: err.Error(), Tag: name})
-			} else {
-				setResponse(w, &ApiResult{Result: true, Value: "success", Tag: name})
-			}
-		case "load":
-			name := r.FormValue("name")
-			value, err := loadData(name)
-			if err != nil {
-				setResponse(w, &ApiResult{Result: false, Value: err.Error(), Tag: name})
-			} else {
-				setResponse(w, &ApiResult{Result: true, Value: value, Tag: name})
-			}
-		}
-		fmt.Printf("フォーム：\n%v\n", r.PostForm)
-	})
+	http.HandleFunc("/api", apiHandler)
 	// start server
 	addr := "127.0.0.1:" + strconv.Itoa(info.Port)
 	fmt.Printf("[Server] http://%s\n", addr)
