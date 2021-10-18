@@ -7,16 +7,19 @@
 
 なでしこ3で作ったプログラムを配布するには、Electronを使う方法もありますが、本プロジェクト(nadesiko3webkit)を使うと、OSにインストールされているWebKitベースのブラウザのコンポーネントを使ってなでしこ3を実行するので、配布サイズが小さく手軽にプログラムを配布できるというメリットがあります。簡単なプログラムであれば、ZIP圧縮して5MB程度の配布サイズになります。
 
+詳しい使い方は、[こちら](res/../README.md)をご覧ください。
 
-# ライブラリのコンパイル
+# 本ライブラリのコンパイル
 
 本ライブラリを構築するには、Go言語が必要です。
 
  - [Go言語](https://golang.org/)
+ - 利用パッケージ
+   - [lorca](https://github.com/zserge/lorca)
 
 ## コンパイルの方法
 
-必要なモジュールを取得する。
+必要なモジュールを取得します。
 
 ```bash
 go get -u
@@ -24,7 +27,7 @@ go get -u
 
 ## Windowsの場合
 
-WindowsではChromium版のEdgeに加えて、WebView2のランタイム「[こちら](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)」が必要です。
+以下のコマンドを実行します。
 
 ```bash
 batch¥build-win.bat
@@ -32,12 +35,9 @@ batch¥build-win.bat
 
 ## macOSの場合
 
+以下のコマンドを実行します。
+
 ```bash
 batch/build-mac.sh
 ```
-
-## (memo) macOSとWindowsで使うライブラリの違い
-
- - macOSでは[webview](https://github.com/webview/webview)に代わって、[lorca](https://github.com/zserge/lorca)を使う
- - Windowsでは[go-webview2](https://github.com/jchv/go-webview2)を使う
 

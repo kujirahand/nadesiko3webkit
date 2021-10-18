@@ -1,4 +1,4 @@
-# 配布用 なでしこ3 (webkit) バイナリ
+# なでしこ3配布用Win/Macパッケージ
 
 このアーカイブは、日本語プログラミング言語「なでしこ3(Web版)」で作ったプログラムを実行ファイルとしてユーザーに配布したい場合に便利なツールです。
 
@@ -12,15 +12,10 @@ Windows版とmacOS版のバイナリファイルが提供されています。
 ZIPファイルを解凍したら、nadesiko3の実行ファイルをダブルクリックしてみてください。
 無事になでしこ3が動くごとが分かったら次の作業に移りましょう。
 
-もし、Windowsで動かない場合、Chromium版のEdgeがインストールされていることを確認してください。
-また、Chromium版のEdgeに加えて、WebView2のランタイムが必要です。
-ページ下部より、「Evergreen Standalone Installer」を選んでインストールしてください。
+なお、本アプリを動かすには、Chrome(またはChromium)が必要です。Chromeのコンポーネントを利用して動作します。
+以下よりインストールしてください。
 
- - [インストールの案内](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)
-
-もし、macOSで動かない場合、[Chrome](https://www.google.com/intl/ja_jp/chrome/)をインストールしてください。
-Chromeがインストールされていれば動きます。
-
+ - [Google Chrome](https://www.google.com/intl/ja_jp/chrome/)
 
 # プログラムを差し替えよう
 
@@ -36,7 +31,7 @@ nadesiko3.appを右クリックして「パッケージ内容を表示」を選�
 特別なコマンドが利用できます。
 ファイルの保存と読み込みが可能です。いずれも非同期に実行されます。
 
-```api.nako3
+```api-list.nako3
 # ファイルへの保存
 「test.txt」に「あいうえお」をファイル保存した時には
 　　「保存しました」と表示
@@ -62,3 +57,15 @@ nadesiko3.appを右クリックして「パッケージ内容を表示」を選�
 <ユーザーフォルダ>/.nadesiko3/<appid>
 ```
 
+## 特殊コマンド利用例
+
+以下ファイルを保存して読み込む利用例です。
+
+```test.nako3
+「いろはにほへと」を「test.txt」へファイル保存時には
+　　「保存しました」と言う。
+　　「test.txt」からファイル読時には
+　　　　対象を言う。
+　　ここまで。
+ここまで。
+```

@@ -1,5 +1,5 @@
 // nadesiko3webkit
-// index.html で使うJavaScriptの関数を定義
+// index.htmlで使うJavaScriptの関数を定義
 
 var nako3_info_id = 1
 
@@ -72,7 +72,7 @@ var nako3_clear = function (s, use_canvas) {
   }
 }
 
-
+//---------------------------------
 function makePostData(params, sys) {
   const flist = []
   for (const key in params) {
@@ -134,11 +134,23 @@ function nako3_files(cb, sys) {
   }, sys)
 }
 
+//---------------------------------
 // 独自関数の登録
 const nako3_add_func = function () {
-  navigator.nako3.setFunc("表示", [['の', 'を', 'と']], nako3_print, true)
-  navigator.nako3.setFunc("表示ログクリア", [], nako3_clear, true)
+  /*
+  // Server経由のAPI
   navigator.nako3.setFunc("ファイル保存時", [['で'], ['を'],['へ', 'に']], nako3_fileSave, true)
   navigator.nako3.setFunc("ファイル読時", [['で'],['を', 'の', 'から']], nako3_fileLoad, true)
   navigator.nako3.setFunc("ファイル一覧取得時", [['で']], nako3_files, true)
+  */
+  navigator.nako3.setFunc("表示", [['の', 'を', 'と']], nako3_print, true)
+  navigator.nako3.setFunc("表示ログクリア", [], nako3_clear, true)
+  // lorcaにバインドされたAPI
+  navigator.nako3.setFunc("ファイル保存時", [['で'],['を'],['へ', 'に']], 
+    (cb, value, name, sys) => nako3api_save(name, value).then(r => { sys.__v0['対象'] = r; cb(r) }, true))
+  navigator.nako3.setFunc("ファイル読時", [['で'],['を', 'の', 'から']], 
+    (cb, name, sys) => nako3api_load(name).then(r => { sys.__v0['対象'] = r; cb(r) }), true)
+  navigator.nako3.setFunc("ファイル一時取得時", [['で']], 
+    (cb, name, sys) => nako3api_files().then(r => { sys.__v0['対象'] = r; cb(r) }), true)
 }
+//---------------------------------
