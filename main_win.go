@@ -12,7 +12,7 @@ func main() {
 	info := ReadIndexJson()
 
 	// ローカルサーバーを起動
-	go StartServer(info.Port)
+	go StartServer(&info)
 
 	// ブラウザを起動
 	w := webview.New(debug)
@@ -23,6 +23,6 @@ func main() {
 		hint = webview.HintFixed
 	}
 	w.SetSize(info.Width, info.Height, hint)
-	w.Navigate(GetIndexURI(info.Port))
+	w.Navigate(GetIndexURI(&info))
 	w.Run()
 }
