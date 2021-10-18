@@ -18,6 +18,10 @@ ZIPファイルを解凍したら、nadesiko3の実行ファイルをダブル�
 
  - [インストールの案内](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)
 
+もし、macOSで動かない場合、[Chrome](https://www.google.com/intl/ja_jp/chrome/)をインストールしてください。
+Chromeがインストールされていれば動きます。
+
+
 # プログラムを差し替えよう
 
 配布用プログラムには、webappフォルダが含まれています。このフォルダを開くと「main.nako3」というファイルがあります。
