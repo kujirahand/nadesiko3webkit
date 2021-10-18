@@ -88,6 +88,7 @@ func ReadIndexJson() IndexInfo {
 		l.Close() // HTTPサーバーの起動前にソケットを閉じておく
 	} else {
 		fmt.Printf("Server Addr: %s\n", ll.Addr().String())
+		ll.Close()
 	}
 
 	return info
