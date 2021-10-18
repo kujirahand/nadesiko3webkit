@@ -60,6 +60,38 @@ func indexErrorHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("<html><body><h1>Loading Error</h1></body></html>"))
 }
 
+func checkPort(info *IndexInfo) {
+	if info.Port == 0 {
+		// 適当に空いているポートを探す
+		l, err2 := net.Listen("tcp", "127.0.0.1:0")
+		if err2 != nil {
+			// 空きポートの検索に失敗
+			log.Fatal(err2)
+		}
+		// ポート番号を得る
+		addr := l.Addr().String()
+		a := strings.Split(addr, ":")
+		pno, err3 := strconv.Atoi(a[1])
+		if err3 != nil {
+			log.Fatal(err3)
+		}
+		info.Port = pno
+		l.Close() // HTTPサーバーの起動前にソケットを閉じておく
+		return
+	}
+	// ポートが利用可能か調べる
+	ll, err := net.Listen("tcp", "127.0.0.1:"+strconv.Itoa(info.Port))
+	if err != nil {
+		info.Port = 0
+		checkPort(info)
+		return
+	} else {
+		fmt.Printf("Server Addr: %s\n", ll.Addr().String())
+		ll.Close()
+	}
+
+}
+
 func ReadIndexJson() IndexInfo {
 	// index.json
 	var info IndexInfo = IndexInfo{Title: "なでしこ3", Width: 640, Height: 400, Port: 8888}
@@ -69,28 +101,7 @@ func ReadIndexJson() IndexInfo {
 		json.Unmarshal(raw, &info)
 		fmt.Printf("size=%d,%d\n", info.Width, info.Height)
 	}
-
-	// ポートが利用可能か調べる
-	ll, err := net.Listen("tcp", "127.0.0.1:"+strconv.Itoa(info.Port))
-	if err != nil {
-		// ポートが使用中だったので、適当に空いているポートを探す
-		l, err2 := net.Listen("tcp", "127.0.0.1:0")
-		if err2 != nil {
-			log.Fatal(err2)
-		}
-		addr := l.Addr().String()
-		a := strings.Split(addr, ":")
-		pno, err3 := strconv.Atoi(a[1])
-		if err3 != nil {
-			log.Fatal(err3)
-		}
-		info.Port = pno
-		l.Close() // HTTPサーバーの起動前にソケットを閉じておく
-	} else {
-		fmt.Printf("Server Addr: %s\n", ll.Addr().String())
-		ll.Close()
-	}
-
+	checkPort(&info)
 	return info
 }
 
