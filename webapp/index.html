@@ -11,15 +11,19 @@
 <div id="main">
   <!-- #header -->
   <div id="header">
-    <h1 style="font-size: 32px;">なでしこ3のランタイムをロードしています。</h1>
+    <h1 style="font-size: 16px; padding: 1em; text-align: center; background: white;">
+      <br><br><img src="image/loading.gif" alt="loading"/>
+      現在、ランタイムを読み込んでいます。<br><br>
+      少々お待ちください。
+    </h1>
   </div>
   
   <!-- RESULT -->
   <div id="nako3result_div_1" class="nako3row" style="display:none;">
     <div id="nako3_info_1" class="nako3info_text" style="display:none;"></div>
     <div id="nako3_info_html_1" class="nako3info_html" style="display:none"></div>
-    <div id="nako3_error_1" class="nako3info_html" style="display:none"></div>
   </div>
+  <div id="nako3_error_1" class="nako3info_html" style="display:none"></div>
   
   <!-- div -->
   <div id="nako3_div_1" class="nako3_div"></div>
@@ -46,21 +50,37 @@
 <!-- main.nako3 の読み込みコード -->
 <script>
   // 変数の初期化
+  const nako3 = navigator.nako3
   const div_name = "#nako3_div_" + nako3_info_id
   const canvas_name = "#nako3_canvas_" + nako3_info_id
+  const div_result_name = "#nako3result_div_" + nako3_info_id
   const addon =
     "「" + div_name + "」へDOM親要素設定;" +
     "「" + div_name + "」に「」をHTML設定;" + 
     "「" + canvas_name + "」へ描画開始;" +
     "カメ描画先=「" + canvas_name + "」;" +
     "\n" // 重要(インデント構文対策)
+  
+    // ログの指定
+  const logger = nako3.replaceLogger()
+  logger.addListener('info', (info) => {
+    console.warn(info.noColor)
+    const c = document.querySelector(div_result_name)
+    c.innerHTML += info.html
+    c.display = "block"
+  })
+    
   // メインコードの読み込み
   fetch('./main.nako3?t=' + (new Date()).getTime())
   .then(response => response.text())
   .then(nakoSource => {
     nako3_add_func()
-    // console.log(addon + nakoSource)
-    navigator.nako3.runReset(addon + nakoSource, '', addon)
+    // 依存ファイルを確認する
+    const src = addon + nakoSource
+    nako3.loadDependencies(src, '', addon)
+      .then(()=>{
+        nako3.runReset(src, '', addon)
+      })
   });
 </script>
 </body>

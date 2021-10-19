@@ -39,16 +39,16 @@ func ReadIndexJson() IndexInfo {
 	return info
 }
 
-func GetIndexURI(info *IndexInfo) string {
+func getIndexPageURL() string {
 	utime := strconv.FormatInt(time.Now().Unix(), 16)
-	return "http://127.0.0.1:" + strconv.Itoa(info.Port) + "/webapp/index.html?time=" + utime
+	return "http://127.0.0.1:" + strconv.Itoa(GlobalInfo.Port) + "/webapp/index.html?time=" + utime
 }
 
 func main() {
 	// Check Chrome runtime
 	if lorca.LocateChrome() == "" {
 		lorca.PromptDownload()
-		log.Fatal(fmt.Errorf("cannot open Chrome app"))
+		log.Fatal("cannot find chrome app")
 	}
 
 	// Load Setting file (index.json)
@@ -58,27 +58,14 @@ func main() {
 	go StartServer(&info)
 
 	// ブラウザを起動
-	ui, _ := lorca.New(GetIndexURI(&info), "", info.Width, info.Height)
+	indexUrl := getIndexPageURL()
+	ui, err := lorca.New(indexUrl, "", info.Width, info.Height)
+	if err != nil {
+		log.Fatal("cannot open browser")
+	}
 	defer ui.Close()
+	// 独自APIを登録
+	BindApi(ui)
 
-	// 関数をバインド (ただし、Promiseとなる)
-	ui.Bind("nako3api_save", func(name string, value string) bool {
-		err := SaveData(name, value)
-		return (err == nil)
-	})
-	ui.Bind("nako3api_load", func(name string) string {
-		value, err := LoadData(name)
-		if err == nil {
-			return value
-		}
-		return ""
-	})
-	ui.Bind("nako3api_files", func() []string {
-		files, err := GetFiles()
-		if err == nil {
-			return files
-		}
-		return []string{}
-	})
 	<-ui.Done()
 }
