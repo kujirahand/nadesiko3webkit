@@ -16,6 +16,7 @@ ZIPファイルを解凍したら、nadesiko3の実行ファイルをダブル�
 以下よりインストールしてください。
 
  - [Google Chrome](https://www.google.com/intl/ja_jp/chrome/)
+   - 要求バージョン: Chrome/Chromium >= 70
 
 # プログラムを差し替えよう
 
