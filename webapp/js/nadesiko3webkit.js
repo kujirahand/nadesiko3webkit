@@ -150,7 +150,7 @@ const nako3_add_func = function () {
     (cb, value, name, sys) => nako3api_save(name, value).then(r => { sys.__v0['対象'] = r; cb(r) }, true))
   navigator.nako3.setFunc("ファイル読時", [['で'],['を', 'の', 'から']], 
     (cb, name, sys) => nako3api_load(name).then(r => { sys.__v0['対象'] = r; cb(r) }), true)
-  navigator.nako3.setFunc("ファイル一時取得時", [['で']], 
-    (cb, name, sys) => nako3api_files().then(r => { sys.__v0['対象'] = r; cb(r) }), true)
+  navigator.nako3.setFunc("ファイル一覧取得時", [['で']], 
+    (cb, sys) => nako3api_files().then(r => { sys.__v0['対象'] = r; cb(r) }), true)
 }
 //---------------------------------
