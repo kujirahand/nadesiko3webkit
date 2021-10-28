@@ -6,8 +6,6 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
-
-	"github.com/zserge/lorca"
 )
 
 // アプリ専用の保存フォルダを得る
@@ -65,24 +63,32 @@ func EnumUserFiles() ([]string, error) {
 	return paths, nil
 }
 
+func Nako3api_save(name string, value string) bool {
+	err := SaveUserFile(name, value)
+	return (err == nil)
+}
+
+func Nako3api_load(name string) string {
+	value, err := LoadUserFile(name)
+	if err == nil {
+		return value
+	}
+	return ""
+}
+
+func Nako3api_files() []string {
+	files, err := EnumUserFiles()
+	if err == nil {
+		return files
+	}
+	return []string{}
+}
+
+/*
 func BindApi(ui lorca.UI) {
 	// 関数をバインド (ただし、Promiseとなる)
-	ui.Bind("nako3api_save", func(name string, value string) bool {
-		err := SaveUserFile(name, value)
-		return (err == nil)
-	})
-	ui.Bind("nako3api_load", func(name string) string {
-		value, err := LoadUserFile(name)
-		if err == nil {
-			return value
-		}
-		return ""
-	})
-	ui.Bind("nako3api_files", func() []string {
-		files, err := EnumUserFiles()
-		if err == nil {
-			return files
-		}
-		return []string{}
-	})
+	ui.Bind("nako3api_save", Nako3api_save)
+	ui.Bind("nako3api_load", Nako3api_load)
+	ui.Bind("nako3api_files", Nako3api_files)
 }
+*/

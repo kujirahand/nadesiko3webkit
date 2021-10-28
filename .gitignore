@@ -1,3 +1,7 @@
+# generate
+view.go
+
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

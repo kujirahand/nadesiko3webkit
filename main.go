@@ -4,12 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"path/filepath"
 	"strconv"
 	"time"
-
-	"github.com/zserge/lorca"
 )
 
 // index.json
@@ -19,6 +16,7 @@ type IndexInfo struct {
 	Height int    `json:"height"`
 	Port   int    `json:"port"`
 	AppId  string `json:"appid"`
+	Resize bool   `json:"resize"`
 }
 
 var GlobalInfo *IndexInfo
@@ -39,18 +37,12 @@ func ReadIndexJson() IndexInfo {
 	return info
 }
 
-func getIndexPageURL() string {
+func GetIndexPageURL() string {
 	utime := strconv.FormatInt(time.Now().Unix(), 16)
 	return "http://127.0.0.1:" + strconv.Itoa(GlobalInfo.Port) + "/webapp/index.html?time=" + utime
 }
 
 func main() {
-	// Check Chrome runtime
-	if lorca.LocateChrome() == "" {
-		lorca.PromptDownload()
-		log.Fatal("cannot find chrome app")
-	}
-
 	// Load Setting file (index.json)
 	info := ReadIndexJson()
 
@@ -58,14 +50,5 @@ func main() {
 	go StartServer(&info)
 
 	// ブラウザを起動
-	indexUrl := getIndexPageURL()
-	ui, err := lorca.New(indexUrl, "", info.Width, info.Height)
-	if err != nil {
-		log.Fatal("cannot open browser")
-	}
-	defer ui.Close()
-	// 独自APIを登録
-	BindApi(ui)
-
-	<-ui.Done()
+	ShowBrowser(&info)
 }
