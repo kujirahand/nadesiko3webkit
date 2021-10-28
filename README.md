@@ -14,8 +14,10 @@
 本ライブラリを構築するには、Go言語が必要です。
 
  - [Go言語](https://golang.org/)
- - 利用パッケージ
+ - 利用パッケージ (以下を選択してビルド)
    - [lorca](https://github.com/zserge/lorca)
+   - [webview](https://github.com/webview/webview)
+   - [webview2](https://github.com/jchv/go-webview2)
 
 ## コンパイルの方法
 
@@ -25,17 +27,33 @@
 go get -u
 ```
 
-## Windowsの場合
+## コンポーネントの切り替え
 
-以下のコマンドを実行します。
+以下のいずれかのバッチを実行します。
+
+```bash
+# lorcaを使う場合(win/mac)
+./make_lorca.sh
+.\make_lorca.bat
+
+# WebViewを使う場合(mac)
+./make_webview_mac.sh
+
+# WebViewを使う場合(win)
+./make_webview_win.bat
+```
+
+## 配布ファイルの作成
+
+batchフォルダ以下のバッチを実行します。
+
+### Windowsの場合
 
 ```bash
 batch¥build-win.bat
 ```
 
-## macOSの場合
-
-以下のコマンドを実行します。
+### macOSの場合
 
 ```bash
 batch/build-mac.sh
