@@ -6,7 +6,7 @@ cd ..
 set ROOT_DIR=%CD%\
 set TARGET_DIR=%SCRIPT_DIR%win-nako3-webview2
 
-rem --- prepare lorca ---
+rem --- prepare webview2 ---
 %ROOT_DIR%make_webview_win.bat
 
 rem --- reset ---
@@ -20,4 +20,5 @@ xcopy %ROOT_DIR%webapp\* %TARGET_DIR%\webapp\ /s /d /e /h /r /y
 copy %SCRIPT_DIR%\res\README.md %TARGET_DIR%\
 
 echo "ok"
+pause
 

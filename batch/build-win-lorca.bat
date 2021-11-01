@@ -4,7 +4,7 @@ set SCRIPT_DIR=%~dp0
 cd %SCRIPT_DIR%
 cd ..
 set ROOT_DIR=%CD%\
-set TARGET_DIR=%SCRIPT_DIR%win-nako3-chrome
+set TARGET_DIR=%SCRIPT_DIR%win-nako3-lorca
 
 rem --- prepare lorca ---
 %ROOT_DIR%make_lorca.bat
@@ -20,4 +20,5 @@ xcopy %ROOT_DIR%webapp\* %TARGET_DIR%\webapp\ /s /d /e /h /r /y
 copy %SCRIPT_DIR%\res\README.md %TARGET_DIR%\
 
 echo "ok"
+pause
 
