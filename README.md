@@ -32,30 +32,16 @@ go get -u
 以下のいずれかのバッチを実行します。
 
 ```bash
-# lorcaを使う場合(win/mac)
+# lorcaを使う場合(mac/win)
 ./make_lorca.sh
 .\make_lorca.bat
 
-# WebViewを使う場合(mac)
+# WebViewを使う場合(mac/win)
 ./make_webview_mac.sh
-
-# WebViewを使う場合(win)
 ./make_webview_win.bat
 ```
 
 ## 配布ファイルの作成
 
 batchフォルダ以下のバッチを実行します。
-
-### Windowsの場合
-
-```bash
-batch¥build-win.bat
-```
-
-### macOSの場合
-
-```bash
-batch/build-mac.sh
-```
 
