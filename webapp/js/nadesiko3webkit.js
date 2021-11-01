@@ -152,5 +152,10 @@ const nako3_add_func = function () {
     (cb, name, sys) => nako3api_load(name).then(r => { sys.__v0['対象'] = r; cb(r) }), true)
   navigator.nako3.setFunc("ファイル一覧取得時", [['で']], 
     (cb, sys) => nako3api_files().then(r => { sys.__v0['対象'] = r; cb(r) }), true)
+  navigator.nako3.setFunc("起動時", [['の'], ['を', 'で']], 
+    (cb, path, sys) => {
+      const args = typeof(path) == 'string' ? [path] : path
+      nako3api_exec(args).then(r => { sys.__v0['対象'] = r; cb(r) }, true)
+    })
 }
 //---------------------------------

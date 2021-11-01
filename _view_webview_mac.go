@@ -30,4 +30,5 @@ func BindApi(w webview.WebView) {
 	w.Bind("nako3api_save", Nako3api_save)
 	w.Bind("nako3api_load", Nako3api_load)
 	w.Bind("nako3api_files", Nako3api_files)
+	w.Bind("nako3api_exec", Nako3api_exec)
 }

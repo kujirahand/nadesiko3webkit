@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"net/url"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 )
@@ -82,6 +83,31 @@ func Nako3api_files() []string {
 		return files
 	}
 	return []string{}
+}
+
+func Nako3api_exec(args []string) string {
+	var out []byte
+	var err error
+	switch len(args) {
+	case 0:
+		return ""
+	case 1:
+		out, err = exec.Command(args[0]).Output()
+	case 2:
+		out, err = exec.Command(args[0], args[1]).Output()
+	case 3:
+		out, err = exec.Command(args[0], args[1], args[2]).Output()
+	case 4:
+		out, err = exec.Command(args[0], args[1], args[2], args[3]).Output()
+	case 5:
+		out, err = exec.Command(args[0], args[1], args[2], args[3], args[4]).Output()
+	case 6:
+		out, err = exec.Command(args[0], args[1], args[2], args[3], args[4], args[5]).Output()
+	}
+	if err != nil {
+		return ""
+	}
+	return string(out)
 }
 
 /*
