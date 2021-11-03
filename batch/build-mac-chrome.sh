@@ -3,7 +3,7 @@
 APP_NAME=nadesiko3
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-MACOS_PATH=$SCRIPT_DIR/mac-nako3-lorca
+MACOS_PATH=$SCRIPT_DIR/mac-nako3-chrome
 TARGET_PATH=$MACOS_PATH/$APP_NAME.app
 TEMPLATE_PATH=$SCRIPT_DIR/res/Template.app
 ROOT_DIR=$(cd $SCRIPT_DIR; cd ..; pwd)

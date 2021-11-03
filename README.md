@@ -33,8 +33,8 @@ go get -u
 
 ```bash
 # lorcaを使う場合(mac/win)
-./make_lorca.sh
-.\make_lorca.bat
+./make_chrome.sh
+.\make_chrome.bat
 
 # WebViewを使う場合(mac/win)
 ./make_webview_mac.sh

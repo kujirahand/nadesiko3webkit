@@ -5,7 +5,7 @@ set SCRIPT_DIR=%~dp0
 cd %SCRIPT_DIR%
 cd ..
 set ROOT_DIR=%CD%\
-set TARGET_DIR=%SCRIPT_DIR%win-nako3-lorca\
+set TARGET_DIR=%SCRIPT_DIR%win-nako3-chrome\
 
 echo --------------------------------------------------------------
 echo ROOT_DIR=%ROOT_DIR%
