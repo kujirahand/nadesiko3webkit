@@ -2,13 +2,11 @@
 APP_NAME=nadesiko3
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 DEST_PATH=$SCRIPT_DIR/linux-nako3-chrome
-APP_PATH=$DEST_PATH/$APP_NAME.app
 ROOT_DIR=$(cd $SCRIPT_DIR; cd ..; pwd)
 
 echo "COPY TEMPLATE"
 rm -f -r $DEST_PATH
 mkdir -p $DEST_PATH
-cp -r $TEMPLATE_PATH $APP_PATH
 cp $SCRIPT_DIR/res/README.md $DEST_PATH/
 
 echo "COPY VIEW"
