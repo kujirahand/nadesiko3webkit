@@ -13,10 +13,11 @@ Linuxの場合、簡単な手順でアプリのビルドが可能です。Ubuntu
 
 ```
 # Go言語のインストール
-$ sudo apt install golang git
+$ sudo apt install golang git webkit2gtk-4.0 chromium
 # リポジトリを取得
 $ git clone https://github.com/kujirahand/nadesiko3webkit.git
 # ビルド
+$ cd nadesiko3webkit
 $ go get -u
 $ bash batch/build-linux-chrome.sh
 $ bash batch/build-linux-webview.sh
