@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 )
@@ -24,13 +25,25 @@ func Exists(name string) bool {
 }
 
 func GetBokanPath() string {
+	// [1] check current dir
 	cur, _ := os.Getwd()
 	webapp := filepath.Join(cur, DIR_WEBAPP)
 	if Exists(webapp) {
 		return cur
 	}
+	// [2] check app dir
 	exe, _ := os.Executable()
-	return filepath.Dir(exe)
+	webapp2 := filepath.Dir(exe)
+	if Exists(webapp2) {
+		return webapp2
+	}
+	// [3] check .app dir
+	if runtime.GOOS == "darwin" {
+		webapp3 := filepath.Dir(filepath.Dir(webapp2))
+		return webapp3
+	}
+	// 404 not found
+	return "https://nadesi.com/doc3/go.php?16421&"
 }
 
 // API --- 現在未使用だが将来的に利用するかも?
