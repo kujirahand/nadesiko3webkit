@@ -1,0 +1,65 @@
+command.json.js:
+  md5(hex): 3aba9ff1f6f8d82b5c4c27d134d1e928
+  sha256(hex): a7df7280063c195f8539c4aaf470f3bfce85deb8da130becb79f01c98d0de4d6
+  sha256(base64): p99ygAY8GV+FOcSq9HDzv86F3rjaEwvst58ByY0N5NY=
+  sha512(base64): U/uP1CfMVZ7IHWTLQzpaM1yS9BMnjYY5rxJ/M77Qpn44nM/s4IlUGHKl+SNyiMvPJXGV6Spkjo0fTLkHMTY24A==
+editor.js:
+  md5(hex): 13804b895da99b8366074c6e1e238c7c
+  sha256(hex): 9b6ff292dea2254873fdfe5c7bf1d8c1461a315ce94dade7bad6cb13baab99ad
+  sha256(base64): m2/ykt6iJUhz/f5ce/HYwUYaMVzpTa3nutbLE7qrma0=
+  sha512(base64): Ca6fUoC/uNGm+q6+MczwroY0hXPKQKfhXmFOH+jiKdRvYkymLTyPA3K3XPC9QpZxYkN94Ua8QgofwaUUajprZA==
+nako_gen_async.js:
+  md5(hex): 07a08093efc31a6bcf2324f93c08c32a
+  sha256(hex): d7431c42ea7d83744fd62705e61030601b5f37661b60eb7f22ba864e851c7d5e
+  sha256(base64): 10McQup9g3RP1icF5hAwYBtfN2YbYOt/IrqGToUcfV4=
+  sha512(base64): uCzSL9zwFfZt8b5pc8Fb80vUE9dEyqDVifb8ddtO3H7Pc++l61wIQISSk9Iiv4gPE6xpstv/oQVr1ld7MtPqHg==
+plugin_caniuse.js:
+  md5(hex): 76c89862db86fd8aebdd7a3bbf1256b0
+  sha256(hex): a193285f22ba1bd13a6d43f34bd2a23bca1d578c05d1f0f609d8ae602eabd9ec
+  sha256(base64): oZMoXyK6G9E6bUPzS9KiO8odV4wF0fD2CdiuYC6r2ew=
+  sha512(base64): lRHoNhMOzuzoHaESG74gLVrinB1gus2NtppqUn2MunaDM9RADkDz/RKPJWmAF1m51qXaWGuvwI3fCW+M4zrT0g==
+plugin_csv.js:
+  md5(hex): 4ac9583d17e9d5f5243e16b769cd3a9e
+  sha256(hex): 5f82a525d60a14cc65719b60544740e49a81b17a5fc7b0c17eb4505cf197a3a8
+  sha256(base64): X4KlJdYKFMxlcZtgVEdA5JqBsXpfx7DBfrRQXPGXo6g=
+  sha512(base64): RSjz053yuktNXg07IjcXqcSNzn4G7cz3JGCk4rLOpUsOj8Yy+052FqVLovD5znStc/mX7jEmetFFi41eCB4Tlw==
+plugin_datetime.js:
+  md5(hex): 1041afd07c0497f5c4a616f75a366c0e
+  sha256(hex): dc713ba129eb22b374b733b1e8c6024973296a5e73b8076c188e057e6ce58c56
+  sha256(base64): 3HE7oSnrIrN0tzOx6MYCSXMpal5zuAdsGI4FfmzljFY=
+  sha512(base64): 2WRRvQ/hGPMHBZmAh30GP8PpcW/H6qPYdDbJkiOQcFCaQCjhFDuepgsR8TEY6V4uFEQregCDuz9v6bd3VluCsQ==
+plugin_kansuji.js:
+  md5(hex): 23b249a13dd65b98be2e99841b478011
+  sha256(hex): 2e9d330d2a562545674e90d379629bcbdac7d29c476a9c8960ea832f8a9963b7
+  sha256(base64): Lp0zDSpWJUVnTpDTeWKby9rH0pxHapyJYOqDL4qZY7c=
+  sha512(base64): fg6F6aTJW65bm4JkjiIfXk3gk0M+OVsBsK3eeF47CgQmplOqVGBRwK4vrpH9rdYQhlcfB/bkPBqvABXOtTjUYw==
+plugin_markup.js:
+  md5(hex): b1443f6d1c060bc2ec80e2fca26f1aa2
+  sha256(hex): 2766aa270e5abddab7cd24c9a93b0c248d610a7228a2574dac5e8ebc47434c4c
+  sha256(base64): J2aqJw5avdq3zSTJqTsMJI1hCnIooldNrF6OvEdDTEw=
+  sha512(base64): TrAKPmPlJEs2sIE0BzNOJSP4xMsIeqC1vlTadcUVtivE5yj+StUE2YO72BLwQHwq2AFaCQjD2z+WXCB4y1hM4w==
+plugin_turtle.js:
+  md5(hex): bc078badb09ed4775fb8165b9b359ba5
+  sha256(hex): 872b62b326035439b96108299e4d470f4a31a9e616c96de9e49d77f1e221aa2f
+  sha256(base64): hytisyYDVDm5YQgpnk1HD0oxqeYWyW3p5J138eIhqi8=
+  sha512(base64): 22Kgp2CVt9U+D94lGW/K7W5nMw/FDxAJ2c/w000dEcU6cLKPR00IBKe6vjk2t6aJL3xpssxCEZoiIQJAWLGQ4g==
+plugin_webworker.js:
+  md5(hex): 124b2c2da94246a5c23329df7e01ab46
+  sha256(hex): 1d26731dec3bd4e8790b851bb03f886b8de51d9099542e3974983310f71e9017
+  sha256(base64): HSZzHew71Oh5C4UbsD+Ia43lHZCZVC45dJgzEPcekBc=
+  sha512(base64): YY3iU4QesbrDkFYrw2Y3hyKCxSX6jghfMLiX7s1GwiTjx+y4Rtptms6nRJbNDVNcuO1yDRdqbrQyv4ztaCxNJA==
+version.js:
+  md5(hex): f7f3a454560803645dfa43b6a8aec785
+  sha256(hex): c76cac2af2bb27bec2c49e7203120349c4b2d9694b2d4b8ed9c48b0968667740
+  sha256(base64): x2ysKvK7J77CxJ5yAxIDScSy2WlLLUuO2cSLCWhmd0A=
+  sha512(base64): /VBCVdrXvsD++ierWql59kLQK6gJBSY2iq2m8P3urLmkoKzplyJaxoaoq+ygz+akS1YeFqlV9Lp0UDWU0veT2w==
+wnako3.js:
+  md5(hex): be9784efdbad77ce201d5a5ffdeae32e
+  sha256(hex): fe275c9956c7e81fba67ae74c17ae3568fe29e80f9b0691ef5619b9e4074780e
+  sha256(base64): /idcmVbH6B+6Z650wXrjVo/inoD5sGke9WGbnkB0eA4=
+  sha512(base64): hY9hQJeFzIRhBdfwekqNNxiSJ6xbvq5U/UgjSGLvawcWcgTOkShei7iLlCt7mvbcOsjdxZVeQqTWcydP0OzykA==
+wnako3webworker.js:
+  md5(hex): aaf06643d0df3aba8f7fbfde349d6b43
+  sha256(hex): 4668771e9baa796d2887769e404bcf9b236f546aa52afe974932d3375ca00c23
+  sha256(base64): Rmh3HpuqeW0oh3aeQEvPmyNvVGqlKv6XSTLTN1ygDCM=
+  sha512(base64): Hn7ypLI73Oaifk1TpWba0MVHC3mAMQNpSQ0tdFrFsDpP/wb4PFKEY+0aK9KNgN1gYb7zargLdIFcntJLejdqaQ==
