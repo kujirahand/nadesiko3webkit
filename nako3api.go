@@ -110,11 +110,27 @@ func Nako3api_exec(args []string) string {
 	return string(out)
 }
 
+func Nako3api_getenv(key string) string {
+	return os.Getenv(key)
+}
+
+func Nako3api_setenv(key string, val string) error {
+	return os.Setenv(key, val)
+}
+
+func Nako3api_envlist() []string {
+	return os.Environ()
+}
+
 /*
-func BindApi(ui lorca.UI) {
+func BindApi(w lorca.UI) {
 	// 関数をバインド (ただし、Promiseとなる)
-	ui.Bind("nako3api_save", Nako3api_save)
-	ui.Bind("nako3api_load", Nako3api_load)
-	ui.Bind("nako3api_files", Nako3api_files)
+	w.Bind("Nako3api_save", Nako3api_save)
+	w.Bind("Nako3api_load", Nako3api_load)
+	w.Bind("Nako3api_files", Nako3api_files)
+	w.Bind("Nako3api_exec", Nako3api_exec)
+	w.Bind("Nako3api_getenv", Nako3api_getenv)
+	w.Bind("Nako3api_setenv", Nako3api_setenv)
+	w.Bind("Nako3api_envlist", Nako3api_envlist)
 }
 */

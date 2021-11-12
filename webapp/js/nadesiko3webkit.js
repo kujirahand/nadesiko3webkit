@@ -146,16 +146,33 @@ const nako3_add_func = function () {
   navigator.nako3.setFunc("表示", [['の', 'を', 'と']], nako3_print, true)
   navigator.nako3.setFunc("表示ログクリア", [], nako3_clear, true)
   // lorcaにバインドされたAPI
-  navigator.nako3.setFunc("ファイル保存時", [['で'],['を'],['へ', 'に']], 
-    (cb, value, name, sys) => nako3api_save(name, value).then(r => { sys.__v0['対象'] = r; cb(r) }, true))
-  navigator.nako3.setFunc("ファイル読時", [['で'],['を', 'の', 'から']], 
-    (cb, name, sys) => nako3api_load(name).then(r => { sys.__v0['対象'] = r; cb(r) }), true)
+  navigator.nako3.setFunc("ファイル保存時", [['で'], ['を'], ['へ', 'に']], 
+    (cb, value, name, sys) => Nako3api_save(name, value).then(r => { sys.__v0['対象'] = r; cb(r) }, true))
+  navigator.nako3.setFunc("ファイル読時", [['で'], ['を', 'の', 'から']], 
+    (cb, name, sys) => Nako3api_load(name).then(r => { sys.__v0['対象'] = r; cb(r) }), true)
   navigator.nako3.setFunc("ファイル一覧取得時", [['で']], 
-    (cb, sys) => nako3api_files().then(r => { sys.__v0['対象'] = r; cb(r) }), true)
+    (cb, sys) => Nako3api_files().then(r => { sys.__v0['対象'] = r; cb(r) }), true)
   navigator.nako3.setFunc("起動時", [['の'], ['を', 'で']], 
     (cb, path, sys) => {
       const args = typeof(path) == 'string' ? [path] : path
-      nako3api_exec(args).then(r => { sys.__v0['対象'] = r; cb(r) }, true)
-    })
+      Nako3api_exec(args).then(r => {
+        sys.__v0['対象'] = r;
+        cb(r) 
+      })
+    }, true)
+  navigator.nako3.setFunc("環境変数取得時", [['で'], ['の']], 
+    (cb, key, sys) => Nako3api_getenv(key).then(r => { sys.__v0['対象'] = r; cb(r) }), true)
+  navigator.nako3.setFunc("環境変数設定時", [['で'], ['に','へ'], ['を']], 
+    (cb, key, val) => Nako3api_setenv(key, val).then(r => cb(r)), true)
+  navigator.nako3.setFunc("環境変数一覧取得時", [['で']], 
+    (cb, sys) => Nako3api_envlist().then(results => {
+      const obj = {}
+      for (let line of results) {
+        const a = line.split('=', 2)
+        obj[a[0]] = a[1]
+      }
+      sys.__v0['対象'] = obj;
+      cb(obj) 
+  }), true)
 }
 //---------------------------------

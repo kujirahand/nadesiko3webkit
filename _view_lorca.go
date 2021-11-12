@@ -29,8 +29,11 @@ func ShowBrowser(info *IndexInfo) {
 
 func BindApi(w lorca.UI) {
 	// 関数をバインド (ただし、Promiseとなる)
-	w.Bind("nako3api_save", Nako3api_save)
-	w.Bind("nako3api_load", Nako3api_load)
-	w.Bind("nako3api_files", Nako3api_files)
-	w.Bind("nako3api_exec", Nako3api_exec)
+	w.Bind("Nako3api_save", Nako3api_save)
+	w.Bind("Nako3api_load", Nako3api_load)
+	w.Bind("Nako3api_files", Nako3api_files)
+	w.Bind("Nako3api_exec", Nako3api_exec)
+	w.Bind("Nako3api_getenv", Nako3api_getenv)
+	w.Bind("Nako3api_setenv", Nako3api_setenv)
+	w.Bind("Nako3api_envlist", Nako3api_envlist)
 }
