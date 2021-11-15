@@ -7,6 +7,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+    "fmt"
 )
 
 // アプリ専用の保存フォルダを得る
@@ -122,9 +123,30 @@ func Nako3api_envlist() []string {
 	return os.Environ()
 }
 
+func Nako3api_info() string {
+    pwd, _ := os.Getwd()
+	return fmt.Sprintf(
+        "{\n" +
+        "\"作業フォルダ\":\"%s\",\n" +
+        "\"EXEパス\":\"%s\",\n" +
+        "\"ユーザーフォルダ\":\"%s\",\n" +
+        "\"起動ポート\":%d,\n" +
+        "\"母艦幅\":%d,\n" +
+        "\"母艦高\":%d\n" +
+        "}\n",
+        pwd,
+        GetBokanPath(),
+        GetUserDir(),
+        GlobalInfo.Port,
+        GlobalInfo.Width,
+        GlobalInfo.Height,
+    )
+}
+
 /*
 func BindApi(w lorca.UI) {
 	// 関数をバインド (ただし、Promiseとなる)
+	w.Bind("Nako3api_info", Nako3api_info)
 	w.Bind("Nako3api_save", Nako3api_save)
 	w.Bind("Nako3api_load", Nako3api_load)
 	w.Bind("Nako3api_files", Nako3api_files)

@@ -144,6 +144,7 @@ const nako3_add_func = function () {
   navigator.nako3.setFunc("ファイル一覧取得時", [['で']], nako3_files, true)
   */
   navigator.nako3.setFunc("表示", [['の', 'を', 'と']], nako3_print, true)
+  navigator.nako3.setFunc("コンソール表示", [['の', 'を', 'と']], (s) => console.log(s), true)
   navigator.nako3.setFunc("表示ログクリア", [], nako3_clear, true)
   // lorcaにバインドされたAPI
   navigator.nako3.setFunc("ファイル保存時", [['で'], ['を'], ['へ', 'に']], 
@@ -174,5 +175,7 @@ const nako3_add_func = function () {
       sys.__v0['対象'] = obj;
       cb(obj) 
   }), true)
+  navigator.nako3.setFunc("内部情報取得時", [['で']], 
+    (cb, sys) => Nako3api_info().then(r => { sys.__v0['対象'] = JSON.parse(r); cb(r) }), true)
 }
 //---------------------------------
