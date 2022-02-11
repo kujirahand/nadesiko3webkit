@@ -6,9 +6,9 @@ require (
 	github.com/jchv/go-webview2 v0.0.0-20211008172525-8b11e9cd5388
 	github.com/jchv/go-winloader v0.0.0-20210711035445-715c2860da7e // indirect
 	github.com/webview/webview v0.0.0-20210330151455-f540d88dde4e
-	golang.org/x/sys v0.0.0-20211015200801-69063c4bb744 // indirect
+	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
 )
 
 require github.com/zserge/lorca v0.1.10
 
-require golang.org/x/net v0.0.0-20211101193420-4a448f8816b3 // indirect
+require golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
