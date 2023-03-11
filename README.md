@@ -32,6 +32,19 @@ $ bash batch/build-linux-webview.sh
 
 なでしこ3で作ったプログラムを配布するには、Electronを使う方法もありますが、本プロジェクト(nadesiko3webkit)を使うと、OSにインストールしたChromeのコンポーネントを使ってなでしこ3を実行するので、配布サイズが小さく手軽にプログラムを配布できるというメリットがあります。簡単なプログラムであれば、ZIP圧縮して5MB程度の配布サイズになります。
 
+## Windowsでビルドする方法
+
+- 1. [Go言語をインストール](https://go.dev/dl/)
+- 2. 以下のコマンドを実行するとビルド
+
+```
+rem --- WebView版をビルドする場合
+.\make_webview_win.bat
+
+rem --- Lorca版をビルドする場合
+.\make_lorca.bat
+```
+
 # (参考) なでしこ配布キット(Electron版)
 
 - [Electronを利用したなでしこ3配布キット](https://github.com/kujirahand/nadesiko3electron)もあります。配布サイズは大きくなりますが、より安定した環境で動作させることが可能です。

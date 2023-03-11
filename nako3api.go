@@ -1,13 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
-    "fmt"
+	"strings"
 )
 
 // アプリ専用の保存フォルダを得る
@@ -123,24 +124,28 @@ func Nako3api_envlist() []string {
 	return os.Environ()
 }
 
+func escJSONFlag(s string) string {
+	return strings.ReplaceAll(s, "\\", "\\\\")
+}
+
 func Nako3api_info() string {
-    pwd, _ := os.Getwd()
+	pwd, _ := os.Getwd()
 	return fmt.Sprintf(
-        "{\n" +
-        "\"作業フォルダ\":\"%s\",\n" +
-        "\"EXEパス\":\"%s\",\n" +
-        "\"ユーザーフォルダ\":\"%s\",\n" +
-        "\"起動ポート\":%d,\n" +
-        "\"母艦幅\":%d,\n" +
-        "\"母艦高\":%d\n" +
-        "}\n",
-        pwd,
-        GetBokanPath(),
-        GetUserDir(),
-        GlobalInfo.Port,
-        GlobalInfo.Width,
-        GlobalInfo.Height,
-    )
+		"{\n"+
+			"\"作業フォルダ\":\"%s\",\n"+
+			"\"EXEパス\":\"%s\",\n"+
+			"\"ユーザーフォルダ\":\"%s\",\n"+
+			"\"起動ポート\":%d,\n"+
+			"\"母艦幅\":%d,\n"+
+			"\"母艦高\":%d\n"+
+			"}\n",
+		escJSONFlag(pwd),
+		escJSONFlag(GetBokanPath()),
+		escJSONFlag(GetUserDir()),
+		GlobalInfo.Port,
+		GlobalInfo.Width,
+		GlobalInfo.Height,
+	)
 }
 
 /*
