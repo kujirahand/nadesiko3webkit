@@ -177,7 +177,6 @@ const nako3_add_func = function () {
   }), true)
   nako3.addFunc("内部情報取得時", [['で']], 
     (cb, sys) => Nako3api_info().then(r => {
-      console.log('@@@', r);
       sys.__v0['対象'] = JSON.parse(r); cb(r) }), false)
   //
   // 非同期関数版(asyncFn)
@@ -189,14 +188,17 @@ const nako3_add_func = function () {
   nako3.addFunc("環境変数取得", [['の']], async (key, _sys) => await Nako3api_getenv(key), false, true)
   nako3.addFunc("環境変数設定", [['に','へ'], ['を']], async (key, val) => await Nako3api_setenv(key, val), true, true)
   nako3.addFunc("環境変数一覧取得", [],
-    async (_sys) => {
+    async function (_sys) {
       const rawEnvList = await Nako3api_envlist()
       const obj = {}
       for (let line of rawEnvList) {
         const a = line.split('=', 2)
-        obj[a[0]] = a[1]
+        const key = '' + a[0]
+        const val = '' + a[1]
+        if (key === '') { continue }
+        obj[key] = val
       }
-      console.log(obj)
+      console.log(JSON.stringify(obj))
       return obj
     }, false, true)
   nako3.addFunc("内部情報取得", [], async (_sys) => await Nako3api_info(), false, true)
