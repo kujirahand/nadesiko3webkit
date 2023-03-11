@@ -182,7 +182,11 @@ const nako3_add_func = function () {
   // 非同期関数版(asyncFn)
   //
   nako3.addFunc("ファイル保存", [['を'], ['へ', 'に']], async (value, name, _sys) => await Nako3api_save(name, value), true, true)
-  nako3.addFunc("ファイル読", [['を', 'の', 'から']], async (name, _sys) => await Nako3api_load(name), false, true)
+  nako3.addFunc("ファイル読", [['を', 'の', 'から']], async (name, _sys) => {
+    const txt = await Nako3api_load(name)
+    console.log('@@load', txt)
+    return txt
+  }, false, true)
   nako3.addFunc("ファイル一覧取得", [], async (_sys) => await Nako3api_files(), false, true)
   nako3.addFunc("起動", [['を', 'で']], async (path, _sys) => await Nako3api_exec(path), false, true)
   nako3.addFunc("環境変数取得", [['の']], async (key, _sys) => await Nako3api_getenv(key), false, true)

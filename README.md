@@ -85,3 +85,9 @@ go get -u
 
 batchフォルダ以下のバッチを実行します。
 
+## なでしこ3のWeb版を最新版にする
+
+```bash
+./update_nadesiko3.sh
+```
+
