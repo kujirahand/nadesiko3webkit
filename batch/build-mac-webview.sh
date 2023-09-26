@@ -30,16 +30,18 @@ APP_ARM=$C_MAC_DIR/$APP_NAME.arm64
 APP_AMD=$C_MAC_DIR/$APP_NAME.amd64
 mkdir -p $C_MAC_DIR
 if [[ -e $GO_M ]]; then
-  echo "[OK] Build mac universal binary"
-  # MAKE Universal Binary 
-  # (ref) https://dev.to/thewraven/universal-macos-binaries-with-go-1-16-3mm3
-  GOOS=darwin GOARCH=arm64 $GO_M build -o $APP_ARM
-  GOOS=darwin GOARCH=amd64 $GO_I build -o $APP_AMD
-  # なぜか出力ディレクトリにフルパスは指定できない仕様のようだ
-  cd $C_MAC_DIR
-  lipo -create -output $APP_NAME $APP_ARM $APP_AMD
-  file $APP_FULL
-  rm $APP_ARM $APP_AMD
+  #   echo "[OK] Build mac universal binary"
+  #   # MAKE Universal Binary 
+  #   # (ref) https://dev.to/thewraven/universal-macos-binaries-with-go-1-16-3mm3
+  #   GOOS=darwin GOARCH=arm64 $GO_M build -o $APP_ARM
+  #   GOOS=darwin GOARCH=amd64 $GO_M build -o $APP_AMD
+  #   # なぜか出力ディレクトリにフルパスは指定できない仕様のようだ
+  #   cd $C_MAC_DIR
+  #   lipo -create -output $APP_NAME $APP_ARM $APP_AMD
+  #   file $APP_FULL
+  #   rm $APP_ARM $APP_AMD
+  echo "Build M1 mac binary"
+  GOOS=darwin GOARCH=arm64 $GO_M build -o $APP_FULL
 else
   echo "[Warning] build binary NOT universal"
   go build -o $APP_FULL

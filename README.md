@@ -5,7 +5,9 @@
 
 ## なでしこ3配布キットのダウンロード
 
-Windows/macOSでは、配布パッケージが用意されています。[こちら](https://github.com/kujirahand/nadesiko3webkit/releases)から対象OSのパッケージをダウンロードするだけでOKです。
+- Windows/macOS用の配布パッケージ(バイナリ)が用意されています。以下より対象OSのパッケージをダウンロードするだけです。
+- [ダウンロード(nadesiko3webkit/relaases)](https://github.com/kujirahand/nadesiko3webkit/releases)
+  - なお、macOS版はv3.4.21からApple Sillicon専用になりました。それ以前のバージョンはユニバーサルバイナリです。
 
 ## 配布キットの資料
 
