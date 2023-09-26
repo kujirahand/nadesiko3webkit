@@ -14,10 +14,40 @@ func ShowBrowser(info *IndexInfo) {
 	}
 
 	// ブラウザを起動
+	var defaultChromeArgs = []string{
+		"--disable-background-networking",
+		"--disable-background-timer-throttling",
+		"--disable-backgrounding-occluded-windows",
+		"--disable-breakpad",
+		"--disable-client-side-phishing-detection",
+		"--disable-default-apps",
+		"--disable-dev-shm-usage",
+		"--disable-infobars",
+		"--disable-extensions",
+		"--disable-features=site-per-process",
+		"--disable-hang-monitor",
+		"--disable-ipc-flooding-protection",
+		"--disable-popup-blocking",
+		"--disable-prompt-on-repost",
+		"--disable-renderer-backgrounding",
+		"--disable-sync",
+		"--disable-translate",
+		"--disable-windows10-custom-titlebar",
+		"--metrics-recording-only",
+		//"--no-first-run",//←こちらは元の記述
+		"no-first-run", //←このように「--」を消す
+		//"--start-fullscreen",             //  <- 起動時最大化
+		"--no-default-browser-check",
+		"--safebrowsing-disable-auto-update",
+		"--disable-automation", // 自動テスト ソフトウェアによって制御されています」を消したい(実際は消えない)
+		"--password-store=basic",
+		"--use-mock-keychain",
+		"--remote-allow-origins=*", //  <- websoket.Dialのbad statusエラーを出さない
+	}
 	indexUrl := GetIndexPageURL()
-	ui, err := lorca.New(indexUrl, "", info.Width, info.Height)
+	ui, err := lorca.New(indexUrl, "", info.Width, info.Height, defaultChromeArgs...)
 	if err != nil {
-		log.Fatal("cannot open browser")
+		log.Fatal(err)
 	}
 	defer ui.Close()
 
