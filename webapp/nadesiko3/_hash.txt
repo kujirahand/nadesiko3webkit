@@ -1,33 +1,33 @@
 command.json.js:
-  md5(hex): f891938f2c5626d3193905d37dae481e
-  sha256(hex): 1bfdfdfc904969465a8be773f6913e997f88eb456fd215f8a5ec58c2806b5304
-  sha256(base64): G/39/JBJaUZai+dz9pE+mX+I60Vv0hX4pexYwoBrUwQ=
-  sha512(base64): DK6GVjOAlbwP7cvQcBwAI3RRZHxRR8b2GYemWjuGvhcwaSUTUKJ/JaT5cae2mY57/pNIsuoHLEwWhnvYaSmM4Q==
+  md5(hex): ff4c23c17de8d510016d4e245a5d15e2
+  sha256(hex): 6f012372497b0458e804f985cde97291e023e49576cd308ca2d4922646728c95
+  sha256(base64): bwEjckl7BFjoBPmFzelykeAj5JV2zTCMotSSJkZyjJU=
+  sha512(base64): qr3wjbCe82ouRpjUJGJb2lRQ/MsKRA9ebZwNPHcdQRYV9r+MdXNiJOvg6ZW44B1quwvoQs0Vf+a9woviBEOhQg==
 editor.js:
-  md5(hex): 661a367b82c87eaa6c73baf931dced65
-  sha256(hex): 197d31ea6008d99827c3d1d96d1296ab2304bf6ff1fcecc6d230ffedc0146f16
-  sha256(base64): GX0x6mAI2Zgnw9HZbRKWqyMEv2/x/OzG0jD/7cAUbxY=
-  sha512(base64): VTy3oPrA2GydInV0OsGHEIgb0iGBVMNEbO2PscFbpXgPPct8CueDan20UtH8L30tvJHmRe1lR35koG1xHZHLRw==
+  md5(hex): 1be41b434af6b5ba1875e1e618c09e15
+  sha256(hex): fe79653da108b32dbfc58ee0c27d05eb9b27bf33140815d8a7be1b15b893246f
+  sha256(base64): /nllPaEIsy2/xY7gwn0F65snvzMUCBXYp74bFbiTJG8=
+  sha512(base64): xMuxgCqPsdh0eQfRwwm30HqcQHG5DEj9SphmZDNM2JIlutsplyEVnQT+sOwkNHcv0F4WHM4bWsHh3KtjAO9fNA==
 nako_gen_async.js:
-  md5(hex): 60de6fc0419502eac6908b11b09c19b1
-  sha256(hex): f6466d3dc386dd4c300c9a9e4307d2dc5a731ab8f1ef8c3f7489fee28ffc422d
-  sha256(base64): 9kZtPcOG3UwwDJqeQwfS3FpzGrjx74w/dIn+4o/8Qi0=
-  sha512(base64): 6fu8m6QI8J6A0FllBeiG+znxLl6TWu2uuv76OKDkRnehMag4+ifhxCIo2F5LAc+El10e3wrYHC4uUPC5luHFvA==
+  md5(hex): bd4f9e023e094582ab4c7ca0e4b1f58a
+  sha256(hex): d92af4f5c38f9e9dff62ff771f69952be797590eeaaa1ff38d76f71b16ab887a
+  sha256(base64): 2Sr09cOPnp3/Yv93H2mVK+eXWQ7qqh/zjXb3GxariHo=
+  sha512(base64): YvDL++ikWzQIBjEIpFyDNYnRKxpSWhNYS6+nLOr7Nklp/DsypuZ9zw+vaFt4wXybFXarpWe1xr8GyH7Cw4J7yA==
 plugin_caniuse.js:
-  md5(hex): b9a7d651b036f1646c76196efc4f220b
-  sha256(hex): 7d50b13fa23b1e4984ae58ace75c08c6db259768649b9fe617025279b3f03a0b
-  sha256(base64): fVCxP6I7HkmErlis51wIxtsll2hkm5/mFwJSebPwOgs=
-  sha512(base64): DQtRUYbRvs3H90qvSM5jMwOQqg5ZKz5MnXp/549AvjuFrGQuboFhRA5XFvHMtVHNR3co9MIepEHu1PoA4sj2XA==
+  md5(hex): 299a09a12914920b4f57c6a36e36cd3c
+  sha256(hex): f29babf69539b536a852148da7225497f237bf0cb1759473cbe61f83f2b22f97
+  sha256(base64): 8pur9pU5tTaoUhSNpyJUl/I3vwyxdZRzy+Yfg/KyL5c=
+  sha512(base64): L5Ho2mB44KLA61vGPHTm9BdDD9b1gUsXDRcBMwtlCrT+kep/2Z6TlrHMU/5ShCNZF/WcdBFqtsfRfS0iLupwBQ==
 plugin_csv.js:
   md5(hex): f261db4a3b582469e57b7be56a86b51d
   sha256(hex): 263df9bc7fd97e2108112f9ed33769c43b8dfd01f365cd1a8786cd0c506bce4f
   sha256(base64): Jj35vH/ZfiEIES+e0zdpxDuN/QHzZc0ah4bNDFBrzk8=
   sha512(base64): mQvmj25L2Nc2L7gN1rTjayHVMMPhc7TCSiBsuKS4JKOQqN+91uj9qpLAOejzR1ib5jIOBdtrhN+secNTU9BJtw==
 plugin_datetime.js:
-  md5(hex): 9565e3fa178fab977dcd7e4f25c2ffb5
-  sha256(hex): 9632b80e3a47c16c6a9f37ac5b507efbc968946ea0677eac13635b4ca452246f
-  sha256(base64): ljK4DjpHwWxqnzesW1B++8lolG6gZ36sE2NbTKRSJG8=
-  sha512(base64): x9UUoQVIUvyaxwymD6rNn7jXEXrTzHBTOBDUeFCbCm+lXVutkT2Fww+N4yOa1ZcxF0PcgDxoRIpMiqkJ1AJThA==
+  md5(hex): 9ba1cde775d0ed38c0ad9cdb7183d1f2
+  sha256(hex): e957a9086c97274418a4feca3f40507ecf91fa8fa0715597f467ec6605bd6ebc
+  sha256(base64): 6VepCGyXJ0QYpP7KP0BQfs+R+o+gcVWX9GfsZgW9brw=
+  sha512(base64): fTSneDauNmb+HmA65Lhif57XXCiOyYO3A6Ui/wKvz0yAXWN6/5DaKHVCaUJnaLHlrO7f8lGyCvCG8bGAEHnc/w==
 plugin_kansuji.js:
   md5(hex): 0e173edb14f7612d69ceea94cbd83cf4
   sha256(hex): b4bafb1a912b04f08b371ce4585d95f7e8f8b83f0042db8609617cb884698e6d
@@ -54,17 +54,17 @@ plugin_weykturtle3d.js:
   sha256(base64): FO/zhIcbO4hNPDHd+ZxPlHIg2r4/3exT7LNYvG5LwTs=
   sha512(base64): TH7Xjq3mkiXW4wy88JLUIASpIN7lYEMlPR62yDlFEJ6vx8oKKv13hoW0Oyx/U0OEjUPZ1vI9zGUHck9UKg+mwQ==
 version.js:
-  md5(hex): eb2409a9eae87472437cc70500c8c7df
-  sha256(hex): e37177fb57d4cb7e34f5d3519e363191b61a6cf091c34dfe21743665b3cb5518
-  sha256(base64): 43F3+1fUy3409dNRnjYxkbYabPCRw03+IXQ2ZbPLVRg=
-  sha512(base64): 3OhsVBXE5l92SBzhYuB7L9dZQQdVdY0RjsZHn5YrTK7BiDZ9HpCMnkHX8Ocub754w5WrKSBexseSbovQygD9dQ==
+  md5(hex): 8074089b6087168f77419b67b4058f73
+  sha256(hex): 368b917da5b712e18705f7a39acfdebb417ab982ac3bafd851c3d0444abeb8d0
+  sha256(base64): NouRfaW3EuGHBfejms/eu0F6uYKsO6/YUcPQREq+uNA=
+  sha512(base64): F1TfMs89RUT6DfzjdAdTVexvAtpLNMfXw5Rk3sKv4PCo8OZTKwFptKHLGBUcN/AWZqxKuliOF+e73wrEQpZGKg==
 wnako3.js:
-  md5(hex): 7154652c0e2a0c3bc05dd1497bdaa19a
-  sha256(hex): f1760bbe16e2750d2ce9627a54b8092799079d69960a8e2e77cad0085aa238da
-  sha256(base64): 8XYLvhbidQ0s6WJ6VLgJJ5kHnWmWCo4ud8rQCFqiONo=
-  sha512(base64): AiYgcoRBbaHpvqD3b1/IuE2VfTQ9p6Iz9DSHXo4AsXABGIqh1jFSF5qdkT7iQ0wBQZ9V9MK4dWabtv/oNAy7qw==
+  md5(hex): 6654a78817efa9b6bc2ca709405ac05f
+  sha256(hex): 40c978d8f7480dbf09f267ad7bfd931e2b0f39095a6d3fa1a40d9a8c78d155c2
+  sha256(base64): QMl42PdIDb8J8mete/2THisPOQlabT+hpA2ajHjRVcI=
+  sha512(base64): S/qNFkPLPy3/fzl2iAz6JzFzseS11Ss3fVhnKv94V1c8PXoFLxJACGPr27U1Ld1bOhg1rDTsHY7sMSFxNPER2w==
 wnako3webworker.js:
-  md5(hex): e9ba4856a0faf36c48ad11d6992662a5
-  sha256(hex): 86be02585301f2d63140a89f8d8cf029c91da12f08177391425fc9e2038ba31f
-  sha256(base64): hr4CWFMB8tYxQKifjYzwKckdoS8IF3ORQl/J4gOLox8=
-  sha512(base64): qXiDjtWqXgEL/jeIj/3tPq488/TsRYLbvKZu95d2eRJYPmLkixFH2mrywfb10eW6584MkgaZwJk3GSUn7OFlCg==
+  md5(hex): 3d187d7fab97bf1c696ec5b183d13c47
+  sha256(hex): 13a7220a1c4063a01f162a9bf67db1d11c0d0420f1e1582c7cac77987228c354
+  sha256(base64): E6ciChxAY6AfFiqb9n2x0RwNBCDx4VgsfKx3mHIow1Q=
+  sha512(base64): kWMFjOtnCXW5UV3IVdwdFXnmdj70z5TFmaVclnPcglQkEF6IMAlPctuz718M4hSbZYKwriCqMm05qpukLGqeEQ==
