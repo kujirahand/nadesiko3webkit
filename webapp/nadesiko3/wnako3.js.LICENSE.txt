@@ -1,1 +1,1 @@
-/*! hotkeys-js v3.9.4 | MIT © 2022 kenny wong <wowohoo@qq.com> http://jaywcjlove.github.io/hotkeys */
+/*! hotkeys-js v3.13.7 | MIT © 2024 kenny wong <wowohoo@qq.com> https://jaywcjlove.github.io/hotkeys-js */

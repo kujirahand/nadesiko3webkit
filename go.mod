@@ -1,14 +1,17 @@
 module nadesiko3
 
-go 1.17
+go 1.21.5
 
 require (
-	github.com/jchv/go-webview2 v0.0.0-20211008172525-8b11e9cd5388
+	github.com/jchv/go-webview2 v0.0.0-20221223143126-dc24628cff85
 	github.com/jchv/go-winloader v0.0.0-20210711035445-715c2860da7e // indirect
-	github.com/webview/webview v0.0.0-20220816141928-2ee04ccd0530
-	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
+	github.com/webview/webview v0.0.0-20240422163931-93be13a101e5
+	golang.org/x/sys v0.20.0 // indirect
 )
 
 require github.com/zserge/lorca v0.1.10
 
-require golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
+require (
+	github.com/webview/webview_go v0.0.0-20240220051247-56f456ca3a43 // indirect
+	golang.org/x/net v0.25.0 // indirect
+)

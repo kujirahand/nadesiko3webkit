@@ -107,15 +107,15 @@ func setResponse(w http.ResponseWriter, result *ApiResult) {
 }
 
 func indexErrorHandler(w http.ResponseWriter, r *http.Request) {
-    f := r.URL.Path[1:]
-    if f == "favicon.ico" {
-        rootDir := GetBokanPath()
-	    w.WriteHeader(200)
-        fmt.Printf("url=%s", f)
+	f := r.URL.Path[1:]
+	if f == "favicon.ico" {
+		rootDir := GetBokanPath()
+		w.WriteHeader(200)
+		fmt.Printf("url=%s", f)
 		file := filepath.Join(rootDir, f)
 		http.ServeFile(w, r, file)
-        return
-    }
+		return
+	}
 	w.WriteHeader(404)
 	w.Header().Set("Content-Type", "text/html; charset=utf8")
 	w.Write([]byte("<html><body><h1>Loading Error</h1></body></html>"))
@@ -151,5 +151,3 @@ func checkPort(info *IndexInfo) {
 		ll.Close()
 	}
 }
-
-

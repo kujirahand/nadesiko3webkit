@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -27,7 +27,7 @@ func ReadIndexJson() IndexInfo {
 	// index.json
 	var info IndexInfo = IndexInfo{Title: "なでしこ3", Width: 800, Height: 600, Port: 8888}
 	indexJson := filepath.Join(GetBokanPath(), "webapp", "index.json")
-	raw, err := ioutil.ReadFile(indexJson)
+	raw, err := os.ReadFile(indexJson)
 	if err == nil { // 読み込めた時
 		json.Unmarshal(raw, &info)
 		fmt.Printf("size=%d,%d\n", info.Width, info.Height)
