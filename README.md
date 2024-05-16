@@ -74,13 +74,13 @@ go get -u
 以下のいずれかのバッチを実行します。
 
 ```bash
-# lorcaを使う場合(mac/win)
-./make_chrome.sh
-.\make_chrome.bat
-
 # WebViewを使う場合(mac/win)
 ./make_webview_mac.sh
-./make_webview_win.bat
+.\make_webview_win.bat
+
+# lorca(Chrome)を使う場合(mac/win) - ただし「Chromeは自動テスト...によって制御されています」と表示されます
+./make_lorca.sh
+.\make_lorca.bat
 ```
 
 ## 配布ファイルの作成
