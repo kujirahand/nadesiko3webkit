@@ -1,7 +1,9 @@
+//go:build windows
+
 package main
 
 import (
-	webview "github.com/jchv/go-webview2"
+	webview2 "github.com/jchv/go-webview2"
 )
 
 func ShowBrowser(info *IndexInfo) {
@@ -11,21 +13,30 @@ func ShowBrowser(info *IndexInfo) {
 
 	// ブラウザを起動
 	debug := true
-	w := webview.New(debug)
+	w := webview2.NewWithOptions(webview2.WebViewOptions{
+		Debug:     debug,
+		AutoFocus: true,
+		WindowOptions: webview2.WindowOptions{
+			Title:  info.Title,
+			Width:  uint(info.Width),
+			Height: uint(info.Height),
+			IconId: 2, // icon resource id
+			Center: true,
+		},
+	})
 	defer w.Destroy()
-	w.SetTitle(info.Title)
-	hint := webview.HintNone
+	hint := webview2.HintNone
 	if !info.Resize {
-		hint = webview.HintFixed
+		hint = webview2.HintFixed
 	}
-	w.SetSize(info.Width, info.Height, webview.Hint(hint))
+	w.SetSize(info.Width, info.Height, webview2.Hint(hint))
 	// 独自APIを登録
 	BindApi(w)
 	w.Navigate(indexUrl)
 	w.Run()
 }
 
-func BindApi(w webview.WebView) {
+func BindApi(w webview2.WebView) {
 	// 関数をバインド (ただし、Promiseとなる)
 	w.Bind("Nako3api_info", Nako3api_info)
 	w.Bind("Nako3api_save", Nako3api_save)

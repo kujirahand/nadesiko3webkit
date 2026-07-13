@@ -13,8 +13,7 @@ echo SCRIPT_DIR=%SCRIPT_DIR%
 echo TARGET_DIR=%TARGET_DIR%
 echo --------------------------------------------------------------
 
-rem --- prepare webview2 ---
-copy %ROOT_DIR%_view_webview_win.go %ROOT_DIR%view.go
+rem --- no copy needed (using build tags) ---
 
 rem --- reset ---
 rmdir /s /q %TARGET_DIR%

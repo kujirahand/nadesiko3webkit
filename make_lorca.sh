@@ -1,4 +1,3 @@
 #!/bin/sh
-cp _view_lorca.go view.go
-go run .
-
+echo "Lorca support has been discontinued. Please use WebView version instead."
+exit 1

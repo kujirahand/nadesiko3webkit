@@ -42,9 +42,6 @@ $ bash batch/build-linux-webview.sh
 ```
 rem --- WebView版をビルドする場合
 .\make_webview_win.bat
-
-rem --- Lorca版をビルドする場合
-.\make_lorca.bat
 ```
 
 # (参考) なでしこ配布キット(Electron版)
@@ -55,11 +52,11 @@ rem --- Lorca版をビルドする場合
 
 本ライブラリを構築するには、Go言語が必要です。
 
- - [Go言語](https://golang.org/)
- - 利用パッケージ (以下を選択してビルド)
-   - [lorca](https://github.com/zserge/lorca)
-   - [webview](https://github.com/webview/webview)
-   - [webview2](https://github.com/jchv/go-webview2)
+- [Go言語](https://golang.org/)
+- 利用パッケージ (以下を選択してビルド)
+  - [webview](https://github.com/webview/webview)
+  - [webview2](https://github.com/jchv/go-webview2)
+  - [lorca](https://github.com/zserge/lorca) --- 対応を中止しました
 
 ## コンパイルの方法
 
@@ -77,10 +74,6 @@ go get -u
 # WebViewを使う場合(mac/win)
 ./make_webview_mac.sh
 .\make_webview_win.bat
-
-# lorca(Chrome)を使う場合(mac/win) - ただし「Chromeは自動テスト...によって制御されています」と表示されます
-./make_lorca.sh
-.\make_lorca.bat
 ```
 
 ## 配布ファイルの作成
@@ -92,4 +85,3 @@ batchフォルダ以下のバッチを実行します。
 ```bash
 ./update_nadesiko3.sh
 ```
-

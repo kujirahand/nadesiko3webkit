@@ -14,8 +14,7 @@ cp -r $TEMPLATE_PATH $APP_PATH
 mkdir -p $APP_PATH/Contents/Resources
 cp $SCRIPT_DIR/res/README.md $MACOS_PATH/
 
-echo "COPY VIEW"
-cp $ROOT_DIR/_view_webview_mac.go $ROOT_DIR/view.go
+echo "NO COPY VIEW NEEDED (using build tags)"
 
 echo "BUILD"
 cd $ROOT_DIR

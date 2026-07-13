@@ -1,6 +1,10 @@
+//go:build !windows
+
 package main
 
-import webview "github.com/webview/webview_go"
+import (
+	webview "github.com/webview/webview_go"
+)
 
 func ShowBrowser(info *IndexInfo) {
 

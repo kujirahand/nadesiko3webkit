@@ -1,4 +1,3 @@
-rem view
-copy _view_lorca.go view.go
-go run .
-
+@echo off
+echo Lorca support has been discontinued. Please use WebView version instead.
+pause

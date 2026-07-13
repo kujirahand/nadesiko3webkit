@@ -24,7 +24,7 @@ DOM親要素に{"padding":"1em"}をDOMスタイル一括設定。
 # 解説ボタン
 説明確認ボタン＝「説明確認」のボタン作成。
 説明確認ボタンをクリックした時には
-　　説明ＵＲＬ＝「https://nadesi.com/doc3/go.php?16421」　
+　　説明ＵＲＬ＝「https://nadesi.com/v3/doc/index.php?%E9%85%8D%E5%B8%83%E3%82%AD%E3%83%83%E3%83%88&show」　
 　　もし、OS取得=「darwin」ならば
 　　　　["open", 説明URL]を起動時には「外部ブラウザで起動しました」と表示。ここまで。
 　　違えば
